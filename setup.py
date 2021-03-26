@@ -41,7 +41,7 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Text Processing :: Indexing",
     ],
-    install_requires=["setuptools"],
+    install_requires=["setuptools","Cython"],
     author="zhouzusheng",
     author_email="zhouzusheng@aitek.ai",
     license="GNU LGPL",

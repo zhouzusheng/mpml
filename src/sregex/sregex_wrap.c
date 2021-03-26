@@ -504,7 +504,7 @@ int regexp_wrap_load(regexp_wrap self, PyObject* file)
 int regexp_wrap_exec(regexp_wrap self, const char* text, int len, regexp_result_callback callback, void* userData) {
 	sre_vm_pike_ctx_t* pctx;
 	sre_int_t ovector[2];
-	sre_int_t rc;
+	sre_int_t rc = 0;
 	int* index = 0;
 	int off = 0;
 	if (self == 0 || self->prog == 0) {
