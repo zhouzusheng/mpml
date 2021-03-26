@@ -784,6 +784,7 @@ ac_error_code ac_index_load(ac_index self, PyObject* file) {
 			state->failure = states[id];
 		}
 	}
+	fseek(fp, ftell(fp), SEEK_SET);
 	fclose(fp);
 	return AC_SUCCESS;
 }

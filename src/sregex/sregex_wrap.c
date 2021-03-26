@@ -282,6 +282,7 @@ void regexp_wrap_load_instruction(sre_pool_t *pool, FILE* fp, sre_instruction_t 
 	case SRE_OPCODE_IN:
 		fread(&data32, sizeof(data32), 1, fp);
 		data32 = ntohl(data32);
+		pc->v.ranges = sre_pnalloc(pool, sizeof(sre_vm_ranges_t));
 		pc->v.ranges->count = data32;
 		pc->v.ranges->head = sre_pnalloc(pool, data32 * sizeof(sre_vm_range_t));
 		for (i = 0; i < pc->v.ranges->count; i++) {
@@ -295,6 +296,7 @@ void regexp_wrap_load_instruction(sre_pool_t *pool, FILE* fp, sre_instruction_t 
 	case SRE_OPCODE_NOTIN:
 		fread(&data32, sizeof(data32), 1, fp);
 		data32 = ntohl(data32);
+		pc->v.ranges = sre_pnalloc(pool, sizeof(sre_vm_ranges_t));
 		pc->v.ranges->count = data32;
 		pc->v.ranges->head = sre_pnalloc(pool, data32 * sizeof(sre_vm_range_t));
 		for (i = 0; i < pc->v.ranges->count; i++) {
@@ -497,6 +499,7 @@ int regexp_wrap_load(regexp_wrap self, PyObject* file)
 	fileno = dup(fileno);
 	fp = fdopen(fileno, "rb");
 	regexp_wrap_load_program(self, fp);
+	fseek(fp, ftell(fp), SEEK_SET);
 	fclose(fp);
 	return 0;
 }
