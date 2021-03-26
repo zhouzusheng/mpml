@@ -17,21 +17,21 @@ For regular expressions,  i embed sregex (https://github.com/openresty/sregex).
 Here is an example:
 
 ```pycon
->>>from mpml import MultiPatternMatcher, MultiRegexpMatcher
->>>index = MultiPatternMatcher()
->>>index.add_word("abc", 1)
->>>index.add_word("bc", 2)
->>>index.end()
->>>index.saveFile("1.dat")
->>>index = MultiPatternMatcher()
->>>index.loadFile("1.dat")
->>>text = "this is abc"
->>>print(index.query(text))
->>>regexp = MultiRegexpMatcher()
->>>regexp.build(["a?c", "bc"])
->>>regexp.saveFile("2.dat")
->>>regexp.loadFile("2.dat")
->>>print(regexp.query(text))
+>>> from mpml import MultiPatternMatcher, MultiRegexpMatcher
+>>> index = MultiPatternMatcher()
+>>> index.add_word("abc", 1)
+>>> index.add_word("bc", 2)
+>>> index.end()
+>>> index.saveFile("1.dat")
+>>> index = MultiPatternMatcher()
+>>> index.loadFile("1.dat")
+>>> text = "this is abc"
+>>> print(index.query(text))
+>>> regexp = MultiRegexpMatcher()
+>>> regexp.build(["a?c", "bc"])
+>>> regexp.saveFile("2.dat")
+>>> regexp.loadFile("2.dat")
+>>> print(regexp.query(text))
 >>> 
 ```
 
