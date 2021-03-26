@@ -283,7 +283,7 @@ ac_error_code ac_output_list_free_item(void *item, void *data)
 	ac_output *output = (ac_output *) item;
 	ac_error_code result = AC_SUCCESS;
 
-	struct ac_output_list_free_item_data *item_data = data;
+	//struct ac_output_list_free_item_data *item_data = data;
 	//result = item_data->free_fn(output->object, NULL);
 	// TODO: let user pass data to free function
 	free(output);
@@ -657,8 +657,8 @@ ac_error_code ac_index_save(ac_index self, PyObject* file) {
 	int data = 0;
 	int state_length;
 	int fileno = PyObject_AsFileDescriptor(file);
-      if (fileno == -1)
-        return AC_FAILURE;
+	if (fileno == -1)
+		return AC_FAILURE;
 	fileno = dup(fileno);
 	fp = fdopen(fileno, "wb");
 

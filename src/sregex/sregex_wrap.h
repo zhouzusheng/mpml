@@ -27,7 +27,7 @@ typedef int(*regexp_result_callback)(void *userData,
 
 void regexp_wrap_free(regexp_wrap self);
 int regexp_wrap_compile(regexp_wrap self, const char* text);
-int regexp_wrap_compile_multi(regexp_wrap self, const char** text, int len);
+int regexp_wrap_compile_multi(regexp_wrap self, char** text, int len);
 int regexp_wrap_exec(regexp_wrap self, const char* text, int len, regexp_result_callback callback, void* userData);
 int regexp_wrap_save(regexp_wrap self, PyObject* file);
 int regexp_wrap_load(regexp_wrap self, PyObject* file);

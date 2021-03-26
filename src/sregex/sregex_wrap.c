@@ -95,7 +95,7 @@ int regexp_wrap_compile(regexp_wrap self, const char* text) {
 	}
 }
 
-int regexp_wrap_compile_multi(regexp_wrap self, const char** text, int len) {
+int regexp_wrap_compile_multi(regexp_wrap self, char** text, int len) {
 	sre_uint_t ncaps = 0;
 	int* flags;
 	sre_int_t err_offset = -1;
@@ -187,7 +187,6 @@ void regexp_wrap_save_instruction(FILE *fp, sre_instruction_t *pc,
 	sre_vm_range_t         *range;
 
 	unsigned char byte;
-	uint16	data16;
 	uint32  data32;
 
 	byte = pc->opcode;
@@ -258,7 +257,6 @@ void regexp_wrap_load_instruction(sre_pool_t *pool, FILE* fp, sre_instruction_t 
 	sre_vm_range_t         *range;
 
 	unsigned char byte;
-	uint16	data16;
 	uint32  data32;
 
 	fread(&byte, sizeof(byte), 1, fp);
